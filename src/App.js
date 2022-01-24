@@ -2,8 +2,8 @@ import "./App.css";
 import useFetch from "./useFetch";
 
 function App() {
-  const { data: joke, loading, error, refetch } = useFetch(
-    "https://v2.jokeapi.dev/joke/Any"
+  const { data: user, loading, error, refetch } = useFetch(
+    "https://randomuser.me/api"
   );
 
   if (loading) return <h1> LOADING...</h1>;
@@ -13,7 +13,7 @@ function App() {
   return (
     <div className="App">
       <h1>
-        {joke?.setup} : {joke?.delivery}
+        {user?.results[0].name.title}  {user?.results[0].name.first}  {user?.results[0].name.last}  
       </h1>
 
       <button onClick={refetch}> Refetch</button>
